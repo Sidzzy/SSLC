@@ -1,0 +1,97 @@
+:root {
+    --ab-white: rgb(255, 255, 255);
+    --ab-black: rgb(0, 0, 0);
+    --ab-yellow: rgb(251, 237, 84);
+    --ab-red: rgb(216, 57, 52);
+    --ab-blue: rgb(49, 72, 157);
+    --ab-green: rgb(102, 195, 102, 1);
+    --ab-grey: rgba(101, 101, 101, 1);
+    --ab-coral: rgba(237, 81, 81, 1);
+  
+    --ab-primary: rgb(53, 75, 153);
+    --ab-primary-rgb: 53, 75, 153;
+    --ab-primary-shade: rgb(39, 53, 69);
+    --ab-primary-shade-rgb: 39, 53, 69;
+    --ab-primary-shade-rgba: rgba(40, 55, 73, 1);
+    --ab-primary-tint: rgb(49, 72, 157);
+    --ab-secondary: rgb(112, 136, 160);
+    --ab-secondary-rgb: 112, 136, 160;
+    --ab-secondary-shade: rgb(182, 202, 221);
+    --ab-success: rgb(55, 171, 74);
+    --ab-success-rgb: 55, 171, 74;
+    --ab-success-shade: rgb(57, 172, 73);
+    --ab-success-tint: rgb(155, 200, 137);
+    --ab-warning: rgb(251, 237, 84);
+    --ab-warning-shade: rgb(237, 190, 120);
+    --ab-warning-shade-rgb: 237, 190, 120;
+    --ab-danger: rgb(216, 57, 52);
+    --ab-danger-shade: rgb(235, 62, 42);
+    --ab-danger-shade-rgb: 235, 62, 42;
+    --ab-danger-tint: rgb(237, 106, 112);
+    --ab-dark: rgb(51, 51, 51);
+    --ab-dark-rgb: 51, 51, 51;
+    --ab-dark-tint: rgb(134, 134, 134);
+    --ab-dark-tint-rgb: 134, 134, 134;
+    --ab-medium: rgb(100, 100, 100);
+    --ab-medium-rgb: 100, 100, 100;
+    --ab-medium-shade: rgb(244, 244, 244);
+    --ab-medium-tint: rgb(226, 226, 226);
+    --ab-light: rgb(207, 206, 204);
+    --ab-light-shade: rgb(247, 247, 247);
+    --ab-light-tint: rgb(255, 248, 248);
+    --ab-bgcolor-light: rgb(235, 239, 242);
+    --ab-bgcolor-dark: rgb(39, 53, 69);
+    --ab-bgcolor-header: rgba(40, 55, 73, 1);
+    --ab-orange: rgb(216, 148, 35);
+    --ab-orange-rgb: 216, 148, 35;
+    --ab-orange-shade: rgb(255, 250, 240);
+    --ab-shadow-grey: rgba(0, 0, 0, 0.16);
+    --ab-purple-light: rgba(203, 197, 224, 1);
+    --ab-brown-light: rgba(206, 184, 161, 1);
+    --ab-green-light: rgba(201, 224, 197, 1);
+    --ab-blue-light: rgba(197, 221, 224, 1);
+    --ab-pink-light: rgba(227, 205, 211, 1);
+    --ab-rosegold: rgba(242, 220, 199, 1);
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace;
+  
+    --base-font-size: 10px;
+    --base-margin-unit: 4px;
+    --base-padding-unit: 4px;
+    --base-radius-unit: 4px;
+  
+    /** Apply Root level styles **/
+    --font-size-small: var(--base-font-size);
+    --font-size-regular: calc(var(--base-font-size) + 3px);
+    --font-size-medium: calc(var(--base-font-size) + 5px);
+    --font-size-large: calc(var(--base-font-size) + 7px);
+    --font-size-extra-large: calc(var(--base-font-size) + 10px);
+    font-size: var(--font-size-regular);
+  
+    --line-height: calc(var(--base-font-size) * 2 + 3px);
+  
+    font-family: 'Roboto', sans-serif !important;
+    --margin: calc(var(--base-margin-unit));
+    --margin-2x: calc(var(--base-margin-unit) * 2);
+    --margin-3x: calc(var(--base-margin-unit) * 3);
+    --margin-4x: calc(var(--base-margin-unit) * 4);
+    --margin-5x: calc(var(--base-margin-unit) * 5);
+    --margin-6x: calc(var(--base-margin-unit) * 6);
+    --margin-7x: calc(var(--base-margin-unit) * 7);
+    --margin-8x: calc(var(--base-margin-unit) * 8);
+  
+    --padding: calc(var(--base-padding-unit));
+    --padding-2x: calc(var(--base-padding-unit) * 2);
+    --padding-3x: calc(var(--base-padding-unit) * 3);
+    --padding-4x: calc(var(--base-padding-unit) * 4);
+    --padding-5x: calc(var(--base-padding-unit) * 5);
+    --padding-6x: calc(var(--base-padding-unit) * 6);
+    --padding-7x: calc(var(--base-padding-unit) * 7);
+    --padding-8x: calc(var(--base-padding-unit) * 8);
+  
+    --border-radius-unit: calc(var(--base-radius-unit));
+    --card-border-radius-unit: calc(var(--base-radius-unit) + 6px);
+}

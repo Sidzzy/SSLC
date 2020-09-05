@@ -1,0 +1,33 @@
+/** FInt declaration **/
+.ab-fontSmall {
+    font-size: var(--font-size-small);
+  }
+  .ab-fontRegular {
+    font-size: var(--font-size-regular);
+  }
+  .ab-fontMedium,
+  h2 {
+    font-size: var(--font-size-medium);
+  }
+  
+  .ab-fontLarge {
+    font-size: var(--font-size-large);
+  }
+  .ab-fontXLarge,
+  h1 {
+    font-size: var(--font-size-extra-large);
+  }
+  
+  .ab-fontXXLarge {
+    font-size: calc(var(--font-size-medium) * 2);
+  }
+  
+  .ab-familyRegular {
+    font-family: 'Roboto-Regular';
+  }
+  .ab-familyMedium {
+    font-family: 'Roboto-Medium';
+  }
+  .ab-familyBold {
+    font-family: 'Roboto-Bold';
+  }
