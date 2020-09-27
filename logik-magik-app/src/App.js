@@ -7,6 +7,8 @@ import EditCourse from './containers/EditCourse';
 import EditChapter from './containers/EditChapter';
 import StudentCourses from './containers/StudentCourses';
 import ViewChapter from './containers/ViewChapter';
+import StudentEditProfile from './containers/StudentEditProfile';
+import InstructorEditProfile from './containers/InstructorEditProfile';
 
 const isUserLoggedIn = (ans) => {
     return ans;
@@ -74,6 +76,14 @@ const App = () => (
         <PrivateRoute
           path="/viewchapters"
           component={ViewChapter}
+        />
+        <PrivateRoute
+          path="/studenteditprofile"
+          component={StudentEditProfile}
+        />
+        <PrivateRoute
+          path="/instructoreditprofile"
+          component={InstructorEditProfile}
         />
         <PrivateRoute
           //TODO: Create a nonExisting page for the all the incoming non existing route.
