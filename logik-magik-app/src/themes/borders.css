@@ -1,0 +1,30 @@
+.ab-border-light {
+  border: 1px solid var(--ab-light);
+}
+.ab-border-white {
+  border: 1px solid var(--ab-white);
+}
+
+.ab-border-dark {
+  border: 1px solid var(--ab-dark) !important;
+}
+
+.ab-border-active {
+  border-color: 1px solid var(--ab-primary-tint);
+}
+
+.ab-border-success {
+  border-color: 1px solid var(--ab-success);
+}
+
+.ab-border-danger {
+  border-color: 1px solid var(--ab-danger);
+}
+
+.ab-border-yellow {
+  border-color: 1px solid var(--ab-warning);
+}
+
+.ab-border-light-yellow {
+  border-color: 1px solid var(--ab-warning-shade);
+}
