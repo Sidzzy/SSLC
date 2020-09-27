@@ -8,9 +8,11 @@ const Home = props => {
         <div>
             <h3>HOME PAGE</h3>
             <div className="ab-pr-4">
-                <Button variant = "btn btn-success btn-lg" onClick = {() => {history.push('/')}}>Home</Button>
-                <Button variant = "btn btn-warning btn-lg" onClick = {() => {history.push('/studentcourses')}}>Student Courses</Button>
-                <Button variant = "btn btn-info btn-lg" onClick = {() => {history.push('/mycourses')}}>Instructor Courses</Button>
+                <Button variant = "outline-success btn-lg" onClick = {() => {history.push('/')}}>Home</Button>{' '}
+                <Button variant = "outline-warning btn-lg" onClick = {() => {history.push('/studentcourses')}}>Student Courses</Button>{' '}
+                <Button variant = "outline-info btn-lg" onClick = {() => {history.push('/mycourses')}}>Instructor Courses</Button>{' '}
+                <Button variant = "outline-secondary btn-lg" onClick = {() => {history.push('/studenteditprofile')}}>Student Edit Profile</Button>{' '}                
+                <Button variant = "outline-danger btn-lg" onClick = {() => {history.push('/instructoreditprofile')}}>Instructor Edit Profile</Button>{' '}              
             </div>
         </div>
     )
