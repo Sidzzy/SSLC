@@ -1,9 +1,14 @@
 import React from 'react';
 import './index.module.css';
 import { Button } from 'react-bootstrap';
+import * as test_api from '../../apis/test';
 
 const Home = props => {
     const { history } = props;
+    test_api.testAPI()
+        .then(data => {
+            console.log(data);
+        });
     return (
         <div>
             <h3>HOME PAGE</h3>

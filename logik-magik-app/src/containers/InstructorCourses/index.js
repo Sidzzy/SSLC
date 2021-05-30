@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import * as course_api from '../../apis/course';
 
 const InstructorCourses = props => {
     const { history } = props;
     const [inputs, setInputs] = useState('');
-    const [myCourses, setMyCourses] = useState(['C++', 'Java']);
+    const [myCourses, setMyCourses] = useState([]);
     useEffect(() => {
-        //TODO: fetch all the courses of the user and push them in myCourses array
+        reset();
     }, []);
+
+    const reset = () => {
+        course_api.getCourses()
+            .then(data => {
+                const courses = data.map(course => ({"courseId": course._id, "courseName": course.courseName}));
+                setMyCourses(courses);
+            });
+    }
 
     const handleInputChange = event => {
         event.persist();
@@ -16,13 +25,22 @@ const InstructorCourses = props => {
         }));
     };
 
+    const deleteCourse = (event, courseId) => {
+        event.preventDefault();
+        course_api.deleteCourse(courseId)
+            .then(data => {
+                reset();
+            })
+    }
+
     const handleSubmit = event => {
         if (event) {
             event.preventDefault();
-            setMyCourses(myCourses => ([
-                ...myCourses,
-                inputs.newCourse
-            ]));
+            course_api.setCourses({courseName: inputs?.newCourse})
+                .then(data => {
+                    //TODO: redirect to edit course for this newly created course directly using data._id
+                    reset();
+                });
         }
     }
 
@@ -32,12 +50,15 @@ const InstructorCourses = props => {
             <ul>
                 {myCourses.map((course, index) => {
                     return (
-                    <li onClick={() => {
-                        //TODO: Push the course id as well: will help to fetch chapters
-                        history.push(`/editcourse?course=${course}`)
-                    }} key={index}>
-                        {course}
-                        <button>Edit Course</button>
+                    <li key={index}>
+                        <div style={{"display": "inline"}} onClick={() => {
+                            //TODO: Push the course id as well: will help to fetch chapters
+                            history.push(`/editcourse?course=${course}`)
+                        }}>
+                            {course?.courseName}
+                            <button>Edit Course</button>
+                        </div>
+                        <button style={{"float": "right"}} onClick={(event) => deleteCourse(event, course?.courseId)}>Delete Course</button>
                     </li>)
                 })}
             </ul>
