@@ -6,8 +6,10 @@ const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 const cors = require("cors");
 const Signature = require('./models/test.js');
-const Course = require('./models/course.js');
 const app = express();
+
+const instructorCourses = require('./routes/Instructor/courses');
+const instructorChapters = require('./routes/Instructor/chapters');
 
 //set from where ur going to hit it from. : https://www.npmjs.com/package/cors
 const corsOptions = {
@@ -50,53 +52,8 @@ app.get('/', (req, res) => {
     res.send("welcome to home page...");
 });
 
-app.get('/instructor/course', (req, res) => {
-    //TODO: get the username from the token sent from client and use that.
-    Course.find({ "userName" : "sidzzy" }).then(course => {
-        res.json(course);
-    });
-    // res.send("will send you the course list");
-});
-
-app.post('/instructor/course', (req, res) => {
-    console.log(req.body.courseName);
-    //TODO: get the username from the token sent from client.
-    Course.create({
-        userName: 'sidzzy',
-        courseName: req.body.courseName,
-    }).then(data => {
-        res.json(data);
-    }).catch(err => {
-        res.json(err);
-    });
-    // res.send(`This will store all your course list: ${req.body}`);
-});
-
-app.delete('/instructor/course/:courseId', (req, res) => {
-    //TODO: Verify whether the course id belongs to the requested user or not.
-    Course.findByIdAndRemove(req.params.courseId)
-        .then(data => {
-            res.json(data);
-        }).catch(err => {
-            res.json(err);
-        });
-});
-
-//TEST apis
-// app.get('/api/signatures', function(req, res) {
-//     Signature.find({}).then(eachOne => {
-//       res.json(eachOne);
-//     })
-// });
-
-// app.post('/api/signatures', function(req, res) {
-//     Signature.create({
-//         guestSignature: req.body.SignatureOfGuest,
-//         message: req.body.MessageofGuest,
-//     }).then(signature => {
-//         res.json(signature)
-//     });
-// });
+app.use('/instructor/course', instructorCourses);
+app.use('/instructor/chapters', instructorChapters);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
