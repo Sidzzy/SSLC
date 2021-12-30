@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
+import * as chapters_api from '../../apis/chapters';
+import { sortChapters } from '../../shared/utility';
 
 const EditCourse = (props) => {
-    const [chapters, setChapters] = useState( [ { 'index':'0' ,'name':'Introduction'}, { 'index':'1' ,'name':'Install'}]);
+    const [chapters, setChapters] = useState([]);
     const [inputs, setInputs] = useState('');
     const query = new URLSearchParams(props.location.search);
+
     useEffect( () => {
         //TODO: call the api which is throwing all the chapters for this course as per course ID.
+        reset();
     }, []);
+
     const handleInputChange = event => {
         event.persist();
         setInputs(inputs => ({
@@ -16,13 +21,29 @@ const EditCourse = (props) => {
         }));
     };
 
-    const handleSubmit = event => {
+    const reset = () => {
+        getChapters(query.get('courseId'));
+    }
+
+    const getChapters = (courseId) => {
+        chapters_api.getChapters(courseId)
+            .then(res => {
+                const foundChapters = res.map(chapter => ({'index': chapter.index, 'name': chapter.name, 'id': chapter._id}));
+                setChapters(sortChapters(foundChapters));
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const addChapter = event => {
         console.log("event=", event.target.value);
         if (event) {
             event.preventDefault();
-            setChapters(chapters => ([
+            setChapters(sortChapters([
                 ...chapters,
                 {
+                    'id': null,
                     'index': inputs.chapterIndex,
                     'name': inputs.chapterName
                 }
@@ -31,18 +52,37 @@ const EditCourse = (props) => {
     }
 
     const handleSave = () => {
-        //sort the chapters in ascending order of their index
-        let sortChapters = chapters;
+        const data = {
+            "courseId" : query.get('courseId'),
+            "chapters" : chapters
+        };
+        chapters_api.addChapters(data)
+            .then(res => {
+                console.log(res);
+                reset();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
 
+    const onIndexChange = (newChapterIndex, arrayIndex) => {
+        setChapters(prevState => {
+            return prevState.map((chapter, index) => {
+                if(index === arrayIndex)
+                    chapter.index = newChapterIndex;
+                return chapter;
+            });
+        });
     }
 
     return (
         <div>
             <form onSubmit="" className="row justify-content-center">
-                <input value={query.get('course')} />
+                <input value={query.get('courseName')} />
                 <button type="submit">Edit Course Name</button>
             </form>
-            <form onSubmit={ handleSave }>
+            {/* <form onSubmit={ handleSave }> */}
                 <h3>Chapters:</h3>
                 <Table striped bordered hover>
                     <thead>
@@ -56,7 +96,7 @@ const EditCourse = (props) => {
                     {chapters.map((chapter, index) => {
                         return (
                             <tr key={index}>
-                                <td><input value={chapter.index} /></td>
+                                <td><input onChange={(event) => onIndexChange(event.target.value, index)} value={chapter.index} /></td>
                                 <td>{chapter.name}</td>
                                 <td onClick={() => {
                                     props.history.push(`/editchapter?chapter=${chapter.name}`)
@@ -68,7 +108,7 @@ const EditCourse = (props) => {
                     </tbody>
                 </Table>
                 <h3>Add a Chapter</h3>
-                <form onSubmit = {handleSubmit}>
+                <form onSubmit = {addChapter}>
                     <input
                         type="text"
                         name="chapterIndex"
@@ -83,12 +123,12 @@ const EditCourse = (props) => {
                         onChange={handleInputChange}
                         placeholder="Chapter Name"
                     />
-                    <button type="submit">Add</button>
+                    <button>Add</button>
                 </form>
                 <div className="d-flex justify-content-center ab-mt-5">
-                    <button type="submit">Save</button>
+                    <button onClick={() => handleSave()}>Save</button>
                 </div>
-            </form>
+            {/* </form> */}
         </div>
     )
 }

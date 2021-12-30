@@ -29,7 +29,7 @@ export async function deleteCourse(id) {
         if (response.data) {
             return Promise.resolve(response.data);
           }
-        } 
+    } 
     catch (err) {
         return Promise.reject(err);
     }

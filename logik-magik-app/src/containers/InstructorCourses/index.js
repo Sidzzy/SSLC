@@ -37,9 +37,14 @@ const InstructorCourses = props => {
         if (event) {
             event.preventDefault();
             course_api.setCourses({courseName: inputs?.newCourse})
-                .then(data => {
-                    //TODO: redirect to edit course for this newly created course directly using data._id
-                    reset();
+                .then(response => {
+                    if(response && response.data)
+                        history.push(`/editcourse?courseId=${response?.data?._id}&courseName=${response?.data?.courseName}`)
+                    else{
+                        //TODO: handle error
+                    }
+                }).catch(error => {
+                    //TODO: handle error - don't move to editCourse page.
                 });
         }
     }
@@ -52,8 +57,7 @@ const InstructorCourses = props => {
                     return (
                     <li key={index}>
                         <div style={{"display": "inline"}} onClick={() => {
-                            //TODO: Push the course id as well: will help to fetch chapters
-                            history.push(`/editcourse?course=${course}`)
+                            history.push(`/editcourse?courseId=${course?.courseId}&courseName=${course?.courseName}`)
                         }}>
                             {course?.courseName}
                             <button>Edit Course</button>
