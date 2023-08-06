@@ -14,7 +14,10 @@ const InstructorCourses = props => {
             .then(data => {
                 const courses = data.map(course => ({"courseId": course._id, "courseName": course.courseName}));
                 setMyCourses(courses);
-            });
+            })
+            .catch(err => {
+                console.log(err);
+            }); 
     }
 
     const handleInputChange = event => {

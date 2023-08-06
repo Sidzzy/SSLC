@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Editor from 'react-medium-editor';
-import { editChapterOptions, dumbContentAssignment } from '../util';
+import { editChapterOptions, dumbContentAssignment } from '../util.ts';
 
 const EditChapter = props => {
     const [inputs, setInputs] = useState([dumbContentAssignment]);
