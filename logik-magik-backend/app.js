@@ -13,7 +13,7 @@ const instructorChapters = require('./routes/Instructor/chapters');
 
 //set from where ur going to hit it from. : https://www.npmjs.com/package/cors
 const corsOptions = {
-    origin: "http://localhost:3002"
+    origin: "http://localhost:3000",
 };
 
 app.use(cors(corsOptions));

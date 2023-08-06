@@ -1,0 +1,39 @@
+/* ======= Driver ======= */
+.editorBody{
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 12rem;
+    height: 100vh;
+    /*TODO: try to find the width based on some the navbar width*/
+    width: calc(100% - 12rem); /* This size is dependent upon the sizebar size */
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.editorBody.sidebarClose {
+    /* Increase of 66% width on close sidebar */
+    left: 4rem;
+    /* width: calc(100% - 4rem); */ /* TODO: For some reason this is not working */
+}
+
+/* ====== Editor ====== */
+
+.editorWrapper {
+    border: 1px solid black;
+}
+.editor {
+    min-height: 500px;
+}
+.preview {
+    min-height: 500px;
+    border: 1px solid black;
+}
+
+
+/* ===== Edit Chapter Name ===== */
+.editChapterNameContainer {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-4x);
+}

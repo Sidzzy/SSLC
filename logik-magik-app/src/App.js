@@ -4,7 +4,7 @@ import './App.css';
 import Home from './containers/Home';
 import InstructorCourses from './containers/InstructorCourses';
 import EditCourse from './containers/EditCourse';
-import EditChapter from './containers/EditChapter';
+import EditChapter from './containers/EditChapter/index.tsx';
 import StudentCourses from './containers/StudentCourses';
 import ViewChapter from './containers/ViewChapter';
 import StudentEditProfile from './containers/StudentEditProfile';
