@@ -9,6 +9,7 @@ import StudentCourses from './containers/StudentCourses';
 import ViewChapter from './containers/ViewChapter';
 import StudentEditProfile from './containers/StudentEditProfile';
 import InstructorEditProfile from './containers/InstructorEditProfile';
+import Register from './containers/Register/Register.tsx';
 
 const isUserLoggedIn = (ans) => {
     return ans;
@@ -84,6 +85,10 @@ const App = () => (
         <PrivateRoute
           path="/instructoreditprofile"
           component={InstructorEditProfile}
+        />
+        <PrivateRoute
+          path="/register"
+          component={Register}
         />
         <PrivateRoute
           //TODO: Create a nonExisting page for the all the incoming non existing route.
